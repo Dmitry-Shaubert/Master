@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="description" content="Мастер на час — быстрый и профессиональный ремонт сантехники, электромонтажные работы, сборка мебели и другие бытовые услуги.">
     <meta name="keywords" content="мастер на час, ремонт сантехники, электромонтажные работы, сборка мебели, услуги сварки, плотницкие работы">
     <meta name="author" content="Мастер на час">
@@ -18,12 +18,13 @@
             color: #333;
             line-height: 1.6;
             scroll-behavior: smooth;
+            overflow-x: hidden; /* Убираем горизонтальную прокрутку */
         }
 
         header {
             background-color: #ffffff;
             color: #333;
-            padding: 20px 0;
+            padding: 15px 0;
             text-align: center;
         }
 
@@ -165,7 +166,7 @@
         /* Адаптивность для мобильных устройств */
         @media (max-width: 600px) {
             header {
-                padding: 15px 0;
+                padding: 10px 0;
             }
 
             .logo img {
