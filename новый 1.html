@@ -10,10 +10,14 @@
     <title>Мастер на час</title>
     <style>
         /* Общие стили */
-        body {
-            font-family: Arial, sans-serif;
+        * {
+            box-sizing: border-box; /* Учитываем padding и border в ширине */
             margin: 0;
             padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
             background-color: #f4f4f4;
             color: #333;
             line-height: 1.6;
@@ -37,9 +41,7 @@
         h1 {
             font-size: 1.5em;
             margin: 10px 0;
-            word-wrap: break-word;
-            hyphens: auto;
-            letter-spacing: -0.5px;
+            word-break: break-word; /* Перенос длинных слов */
         }
 
         nav {
@@ -64,9 +66,8 @@
         .container {
             padding: 10px;
             background-color: #e0e0e0;
-            max-width: 100%;
+            width: 100%; /* Контейнер занимает всю ширину */
             margin: 0 auto;
-            box-sizing: border-box;
         }
 
         section {
@@ -79,18 +80,14 @@
         h2 {
             font-size: 1.3em;
             margin-bottom: 15px;
-            word-wrap: break-word;
-            hyphens: auto;
-            letter-spacing: -0.5px;
+            word-break: break-word; /* Перенос длинных слов */
         }
 
         p, li {
             font-size: 0.9em;
             line-height: 1.6;
             margin-bottom: 15px;
-            word-wrap: break-word;
-            hyphens: auto;
-            letter-spacing: -0.5px;
+            word-break: break-word; /* Перенос длинных слов */
         }
 
         ul {
@@ -205,7 +202,6 @@
             p, li {
                 font-size: 0.85em;
                 line-height: 1.6;
-                letter-spacing: -0.5px;
             }
 
             .service-image img {
