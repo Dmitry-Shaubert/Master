@@ -9,6 +9,7 @@
     <link rel="icon" type="image/png" href="images/favicon.png">
     <title>Мастер на час</title>
     <style>
+        /* Общие стили */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -16,94 +17,98 @@
             background-color: #f4f4f4;
             color: #333;
             line-height: 1.6;
-            scroll-behavior: smooth; /* Плавная прокрутка */
+            scroll-behavior: smooth;
         }
+
         header {
             background-color: #ffffff;
             color: #333;
             padding: 20px 0;
             text-align: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
+
         .logo img {
-            width: 300px;
+            max-width: 100%;
             height: auto;
-            margin-right: 20px;
+            width: 150px; /* Логотип меньше для мобильных */
         }
+
+        h1 {
+            font-size: 1.5em;
+            margin: 10px 0;
+        }
+
         nav {
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             background-color: #e0e0e0;
+            padding: 10px 0;
         }
+
         nav a {
             color: #333;
-            padding: 14px 20px;
+            padding: 10px;
             text-decoration: none;
-            display: block;
+            text-align: center;
             transition: background-color 0.3s ease;
         }
+
         nav a:hover {
             background-color: #d0d0d0;
         }
+
         .container {
-            padding: 20px;
+            padding: 10px;
             background-color: #e0e0e0;
-            max-width: 100%; /* Контейнер занимает всю ширину */
+            max-width: 100%;
             margin: 0 auto;
-            box-sizing: border-box; /* Учитываем padding в ширине */
+            box-sizing: border-box;
         }
-        footer {
-            background-color: #c0c0c0;
-            color: white;
-            text-align: center;
-            padding: 10px 0;
-            position: relative;
-            width: 100%;
-        }
+
         section {
-            margin-bottom: 40px;
+            margin-bottom: 20px;
             background-color: #ffffff;
-            padding: 20px;
+            padding: 15px;
             border-radius: 5px;
         }
-        h1, h2 {
-            color: #333;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
+
         h2 {
-            font-size: 1.8em;
+            font-size: 1.3em;
+            margin-bottom: 15px;
         }
+
         p {
-            font-size: 1em;
-            line-height: 1.8;
-            margin-bottom: 20px; /* Отступы между абзацами */
+            font-size: 0.9em;
+            line-height: 1.6;
+            margin-bottom: 15px;
         }
+
         ul {
             list-style-type: disc;
             padding-left: 20px;
         }
+
         li {
             margin-bottom: 10px;
-            line-height: 1.6;
         }
+
         .service-image img {
-            max-width: 100%; /* Изображения адаптивны */
+            max-width: 100%;
             height: auto;
             margin-top: 10px;
             border-radius: 5px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Тень для изображений */
         }
+
         .contact-phone, .contact-email {
-            font-size: 1.2em;
+            font-size: 1.1em;
             font-weight: bold;
-            margin-top: 20px;
+            margin-top: 15px;
         }
+
         .contact-links {
             margin-top: 10px;
         }
+
         .contact-links a {
             display: inline-block;
             margin-right: 10px;
@@ -111,9 +116,18 @@
             text-decoration: none;
             font-weight: bold;
         }
+
         .contact-links a:hover {
             text-decoration: underline;
         }
+
+        footer {
+            background-color: #c0c0c0;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+
         #scrollToTop {
             position: fixed;
             bottom: 20px;
@@ -125,17 +139,16 @@
             cursor: pointer;
             display: none;
         }
-        .feedback-form {
-            margin-top: 20px;
-        }
+
         .feedback-form input, .feedback-form textarea {
             width: 100%;
             padding: 10px;
             margin-bottom: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
-            box-sizing: border-box; /* Учитываем padding в ширине */
+            box-sizing: border-box;
         }
+
         .feedback-form button {
             padding: 10px 20px;
             background-color: #333;
@@ -144,46 +157,47 @@
             border-radius: 5px;
             cursor: pointer;
         }
+
         .feedback-form button:hover {
             background-color: #555;
         }
 
         /* Адаптивность для мобильных устройств */
-        @media (max-width: 450px) {
+        @media (max-width: 600px) {
             header {
-                flex-direction: column;
-                align-items: center;
+                padding: 15px 0;
             }
+
             .logo img {
-                width: 150px;
-                margin-right: 0;
-                margin-bottom: 10px;
+                width: 120px; /* Логотип еще меньше для очень маленьких экранов */
             }
-            nav {
-                flex-direction: column;
-                align-items: center;
-            }
-            nav a {
-                width: 100%; /* Ссылки занимают всю ширину */
-                text-align: center;
-                padding: 10px 0;
-            }
-            .container {
-                padding: 10px;
-            }
+
             h1 {
-                font-size: 1.5em;
-                text-align: center;
-            }
-            h2 {
                 font-size: 1.3em;
             }
-            p {
-                font-size: 0.9em;
-                line-height: 1.6;
+
+            nav a {
+                padding: 8px;
             }
+
+            .container {
+                padding: 5px;
+            }
+
+            section {
+                padding: 10px;
+            }
+
+            h2 {
+                font-size: 1.2em;
+            }
+
+            p {
+                font-size: 0.85em;
+            }
+
             .service-image img {
-                max-width: 100%; /* Изображения занимают всю ширину */
+                margin-top: 5px;
             }
         }
     </style>
@@ -192,7 +206,7 @@
 
 <header>
     <div class="logo">
-        <img src="images/logo.png" alt="Логотип мастера на час" width="300" height="auto">
+        <img src="images/logo.png" alt="Логотип мастера на час">
     </div>
     <h1>Мастер на час</h1>
 </header>
@@ -217,32 +231,32 @@
         <ul>
             <li><strong>Ремонт сантехники:</strong> Устранение протечек, замена смесителей, установка раковин и ванных принадлежностей. Прокладка различных трубопроводов. Установка дополнительного сантехнического оборудования
                 <div class="service-image">
-                    <img src="images/repair_plumbing.png" alt="Ремонт сантехники" width="300" height="auto">
+                    <img src="images/repair_plumbing.png" alt="Ремонт сантехники">
                 </div>
             </li>
             <li><strong>Электромонтажные работы:</strong> Замена розеток, выключателей, лампочек, а также установка осветительных приборов и других электрических устройств. Монтаж проводки.
                 <div class="service-image">
-                    <img src="images/electrical_works.png" alt="Электромонтажные работы" width="300" height="auto">
+                    <img src="images/electrical_works.png" alt="Электромонтажные работы">
                 </div>
             </li>
             <li><strong>Мебельный ремонт:</strong> Ремонт сломанных деталей мебели, замена фурнитуры, восстановление повреждённых поверхностей.
                 <div class="service-image">
-                    <img src="images/furniture_repair.png" alt="Мебельный ремонт" width="300" height="auto">
+                    <img src="images/furniture_repair.png" alt="Мебельный ремонт">
                 </div>
             </li>
             <li><strong>Сборка мебели:</strong> Быстрая и качественная сборка новой мебели, будь то шкафы, столы или кровати. Монтаж.
                 <div class="service-image">
-                    <img src="images/assembly_furniture.png" alt="Сборка мебели" width="300" height="auto">
+                    <img src="images/assembly_furniture.png" alt="Сборка мебели">
                 </div>
             </li>
             <li><strong>Услуги сварки:</strong> Выполнение различных сварочных работ, таких как ремонт металлических конструкций, изготовление кованых изделий, сварка труб и многое другое.
                 <div class="service-image">
-                    <img src="images/welding_services.png" alt="Услуги сварки" width="300" height="auto">
+                    <img src="images/welding_services.png" alt="Услуги сварки">
                 </div>
             </li>
             <li><strong>Плотницкие работы:</strong> Изготовление и ремонт деревянных конструкций, напольных покрытий и многое другое.
                 <div class="service-image">
-                    <img src="images/carpentry_works.png" alt="Плотницкие работы" width="300" height="auto">
+                    <img src="images/carpentry_works.png" alt="Плотницкие работы">
                 </div>
             </li>
         </ul>
