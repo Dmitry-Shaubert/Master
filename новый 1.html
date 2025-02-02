@@ -3,366 +3,435 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="description" content="Мастер на час — быстрый и профессиональный ремонт сантехники, электромонтажные работы, сборка мебели и другие бытовые услуги.">
-    <meta name="keywords" content="мастер на час, ремонт сантехники, электромонтажные работы, сборка мебели, услуги сварки, плотницкие работы">
-    <meta name="author" content="Мастер на час">
-    <link rel="icon" type="image/png" href="images/favicon.png">
-    <title>Мастер на час</title>
+    <meta name="theme-color" content="#2A5C82">
+    <title>Мастер на час | Профессиональные бытовые услуги</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
-        /* Общие стили */
+        :root {
+            --primary-color: #2A5C82;
+            --accent-color: #F4A261;
+            --text-color: #333;
+            --light-gray: #F8F9FA;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
         * {
-            box-sizing: border-box; /* Учитываем padding и border в ширине */
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
 
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
+            font-family: 'Roboto', Arial, sans-serif;
             line-height: 1.6;
-            scroll-behavior: smooth;
-            overflow-x: hidden; /* Убираем горизонтальную прокрутку */
+            color: var(--text-color);
+            background: var(--light-gray);
+            overflow-x: hidden;
         }
 
-        header {
-            background-color: #ffffff;
-            color: #333;
-            padding: 15px 0;
+        /* Хедер */
+        .logo-container {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: linear-gradient(135deg, var(--primary-color), #1D3557);
+            padding: 20px 0;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.2);
             text-align: center;
         }
 
-        .logo img {
-            max-width: 100%;
+        .logo-img {
+            width: 150px;
             height: auto;
-            width: 150px; /* Логотип меньше для мобильных */
+            margin-bottom: 15px;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
         }
 
-        h1 {
-            font-size: 1.5em;
-            margin: 10px 0;
-            overflow-wrap: break-word; /* Принудительный перенос текста */
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
         }
 
+        .logo-title {
+            font-size: 1.8em;
+            color: white;
+            font-weight: 700;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+        }
+
+        .logo-phone {
+            font-size: 1.2em;
+            color: var(--accent-color);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        /* Навигация */
         nav {
             display: flex;
             flex-direction: column;
-            background-color: #e0e0e0;
-            padding: 10px 0;
+            background: var(--primary-color);
+            position: sticky;
+            top: 140px;
+            z-index: 999;
         }
 
         nav a {
-            color: #333;
-            padding: 10px;
+            padding: 15px;
+            color: white;
             text-decoration: none;
             text-align: center;
-            transition: background-color 0.3s ease;
+            transition: var(--transition);
+            font-weight: 500;
         }
 
         nav a:hover {
-            background-color: #d0d0d0;
+            background: var(--accent-color);
+            transform: translateY(-2px);
         }
 
+        /* Основной контент */
         .container {
-            padding: 10px;
-            background-color: #e0e0e0;
-            width: 100%; /* Контейнер занимает всю ширину */
+            max-width: 1200px;
             margin: 0 auto;
+            padding: 20px;
         }
 
         section {
-            margin-bottom: 20px;
-            background-color: #ffffff;
-            padding: 15px;
-            border-radius: 5px;
-            overflow-wrap: break-word; /* Принудительный перенос текста */
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: var(--transition);
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         h2 {
-            font-size: 1.3em;
-            margin-bottom: 15px;
-            overflow-wrap: break-word; /* Принудительный перенос текста */
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            border-left: 4px solid var(--accent-color);
+            padding-left: 15px;
         }
 
         p, li {
-            font-size: 0.9em;
-            line-height: 1.6;
+            color: #555;
+            line-height: 1.8;
             margin-bottom: 15px;
-            overflow-wrap: break-word; /* Принудительный перенос текста */
+            hyphens: auto;
         }
 
         ul {
-            list-style-type: disc;
-            padding-left: 20px;
+            list-style: none;
         }
 
         li {
+            padding: 12px;
+            background: var(--light-gray);
             margin-bottom: 10px;
+            border-radius: 6px;
+            transition: var(--transition);
         }
 
-        .service-image img {
-            max-width: 100%;
-            height: auto;
-            margin-top: 10px;
-            border-radius: 5px;
+        li:hover {
+            transform: translateX(10px);
+            box-shadow: 2px 0 8px rgba(0,0,0,0.1);
         }
 
-        .contact-phone, .contact-email {
-            font-size: 1.1em;
-            font-weight: bold;
-            margin-top: 15px;
+        /* Изображения */
+        .image-container {
+            position: relative;
+            margin: 20px 0;
+            border-radius: 8px;
+            overflow: hidden;
+            min-height: 250px;
         }
 
-        .contact-links {
-            margin-top: 10px;
-        }
-
-        .contact-links a {
-            display: inline-block;
-            margin-right: 10px;
-            color: #333;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .contact-links a:hover {
-            text-decoration: underline;
-        }
-
-        footer {
-            background-color: #c0c0c0;
-            color: white;
-            text-align: center;
-            padding: 10px 0;
-        }
-
-        #scrollToTop {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            padding: 10px;
-            background-color: #333;
-            color: white;
-            border: none;
-            cursor: pointer;
-            display: none;
-        }
-
-        .feedback-form input, .feedback-form textarea {
+        .lazy-image {
             width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-sizing: border-box;
+            height: auto;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .lazy-image.loaded {
+            opacity: 1;
+        }
+
+        /* Форма обратной связи */
+        .feedback-form {
+            display: grid;
+            gap: 15px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .feedback-form input,
+        .feedback-form textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        .feedback-form input:focus,
+        .feedback-form textarea:focus {
+            border-color: var(--primary-color);
+            outline: none;
         }
 
         .feedback-form button {
-            padding: 10px 20px;
-            background-color: #333;
+            background: var(--primary-color);
             color: white;
+            padding: 15px 30px;
             border: none;
-            border-radius: 5px;
+            border-radius: 6px;
             cursor: pointer;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
         }
 
         .feedback-form button:hover {
-            background-color: #555;
+            background: var(--accent-color);
+            transform: translateY(-2px);
         }
 
-        /* Адаптивность для мобильных устройств */
-        @media (max-width: 600px) {
-            header {
-                padding: 10px 0;
-            }
+        /* Футер */
+        footer {
+            background: var(--primary-color);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            margin-top: 40px;
+        }
 
-            .logo img {
-                width: 120px; /* Логотип еще меньше для очень маленьких экранов */
-            }
-
-            h1 {
-                font-size: 1.3em;
-            }
-
-            nav a {
-                padding: 8px;
-            }
-
+        /* Адаптивность */
+        @media (max-width: 768px) {
             .container {
-                padding: 5px;
+                padding: 15px;
             }
 
             section {
-                padding: 10px;
+                padding: 20px;
+                margin-bottom: 20px;
+            }
+
+            .logo-title {
+                font-size: 1.5em;
+            }
+
+            .logo-phone {
+                font-size: 1.1em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo-container {
+                padding: 15px 10px;
+            }
+
+            .logo-img {
+                width: 120px;
+            }
+
+            nav {
+                top: 120px;
+            }
+
+            nav a {
+                font-size: 0.9em;
+                padding: 12px 8px;
             }
 
             h2 {
-                font-size: 1.2em;
-            }
-
-            p, li {
-                font-size: 0.85em;
-                line-height: 1.6;
-            }
-
-            .service-image img {
-                margin-top: 5px;
+                font-size: 1.4em;
             }
         }
     </style>
 </head>
 <body>
+    <header class="logo-container">
+        <img src="images/logo.png" alt="Логотип компании" class="logo-img">
+        <div class="logo-text">
+            <h1 class="logo-title">Мастер на час</h1>
+            <div class="logo-phone">+7 (912) 255-70-88</div>
+        </div>
+    </header>
 
-<header>
-    <div class="logo">
-        <img src="images/logo.png" alt="Логотип мастера на час">
+    <nav aria-label="Основная навигация">
+        <a href="#home">Главная</a>
+        <a href="#services">Услуги</a>
+        <a href="#about">О нас</a>
+        <a href="#contacts">Контакты</a>
+        <a href="#feedback">Обратная связь</a>
+    </nav>
+
+    <div class="container">
+        <!-- Главная -->
+        <section id="home" class="visible">
+            <h2>Бытовые услуги профессионально и оперативно</h2>
+            <p>Решаем любые бытовые задачи: от мелкого ремонта до сложных монтажных работ. Работаем круглосуточно, 7 дней в неделю.</p>
+        </section>
+
+        <!-- Услуги -->
+        <section id="services">
+            <h2>Наши услуги</h2>
+            <ul>
+                <li>
+                    <strong>Сантехнические работы</strong>
+                    <p>Устранение протечек, замена смесителей, установка сантехники, ремонт труб.</p>
+                    <div class="image-container">
+                        <picture>
+                            <source srcset="images/plumbing.webp" type="image/webp">
+                            <img src="images/plumbing.jpg" alt="Сантехнические работы" class="lazy-image">
+                        </picture>
+                    </div>
+                </li>
+                <li>
+                    <strong>Электромонтажные работы</strong>
+                    <p>Установка розеток, выключателей, замена проводки, монтаж освещения.</p>
+                    <div class="image-container">
+                        <picture>
+                            <source srcset="images/electrical.webp" type="image/webp">
+                            <img src="images/electrical.jpg" alt="Электромонтажные работы" class="lazy-image">
+                        </picture>
+                    </div>
+                </li>
+                <li>
+                    <strong>Сборка мебели</strong>
+                    <p>Сборка шкафов, столов, кроватей, кухонных гарнитуров.</p>
+                    <div class="image-container">
+                        <picture>
+                            <source srcset="images/furniture.webp" type="image/webp">
+                            <img src="images/furniture.jpg" alt="Сборка мебели" class="lazy-image">
+                        </picture>
+                    </div>
+                </li>
+                <li>
+                    <strong>Плотницкие работы</strong>
+                    <p>Изготовление и ремонт деревянных конструкций, установка дверей.</p>
+                    <div class="image-container">
+                        <picture>
+                            <source srcset="images/carpentry.webp" type="image/webp">
+                            <img src="images/carpentry.jpg" alt="Плотницкие работы" class="lazy-image">
+                        </picture>
+                    </div>
+                </li>
+                <li>
+                    <strong>Услуги сварки</strong>
+                    <p>Ремонт металлических конструкций, изготовление ворот, решеток.</p>
+                    <div class="image-container">
+                        <picture>
+                            <source srcset="images/welding.webp" type="image/webp">
+                            <img src="images/welding.jpg" alt="Услуги сварки" class="lazy-image">
+                        </picture>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <!-- О нас -->
+        <section id="about">
+            <h2>О нас</h2>
+            <p>Мы — команда профессиональных мастеров с многолетним опытом работы. Наши преимущества:</p>
+            <ul>
+                <li>Быстрый выезд в течение 1-2 часов</li>
+                <li>Гарантия на все виды работ</li>
+                <li>Прозрачные цены без скрытых платежей</li>
+                <li>Соблюдение сроков и высокое качество</li>
+            </ul>
+        </section>
+
+        <!-- Контакты -->
+        <section id="contacts">
+            <h2>Контакты</h2>
+            <p>Работаем по всему городу и области</p>
+            <div class="contact-info">
+                <p>📞 Телефон: <a href="tel:+79122557088">+7 (912) 255-70-88</a></p>
+                <p>📧 Email: <a href="mailto:dv9122557088@yandex.ru">dv9122557088@yandex.ru</a></p>
+            </div>
+        </section>
+
+        <!-- Обратная связь -->
+        <section id="feedback">
+            <h2>Обратная связь</h2>
+            <form class="feedback-form">
+                <input type="text" name="name" placeholder="Ваше имя" required>
+                <input type="tel" name="phone" placeholder="Ваш телефон" pattern="\+7\s?[0-9]{3}\s?[0-9]{3}-[0-9]{2}-[0-9]{2}" required>
+                <textarea name="message" placeholder="Опишите вашу задачу" rows="4" required></textarea>
+                <button type="submit">Отправить заявку</button>
+            </form>
+        </section>
     </div>
-    <h1>Мастер на час</h1>
-</header>
 
-<nav>
-    <a href="#home" aria-label="Перейти на главную страницу">Главная</a>
-    <a href="#services" aria-label="Перейти к списку услуг">Услуги</a>
-    <a href="#about" aria-label="Перейти к информации о нас">О нас</a>
-    <a href="#contacts" aria-label="Перейти к контактной информации">Контакты</a>
-    <a href="#feedback" aria-label="Перейти к форме обратной связи">Обратная связь</a>
-</nav>
+    <footer>
+        <p>&copy; 2023 Мастер на час. Все права защищены.</p>
+    </footer>
 
-<div class="container">
-    <section id="home">
-        <h2>"Мастер на час: быстрое решение всех ваших бытовых проблем!"</h2>
-        <p>Ваш дом — это ваше убежище, но иногда даже самые незначительные проблемы могут вызвать стресс. Не беспокойтесь! Наша услуга "Мастер на час" поможет вам справиться с любыми мелкими бытовыми задачами быстро и профессионально.</p>
-    </section>
+    <script>
+        // Ленивая загрузка изображений
+        document.addEventListener('DOMContentLoaded', () => {
+            const lazyImages = [].slice.call(document.querySelectorAll('.lazy-image'));
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src;
+                        img.classList.add('loaded');
+                        observer.unobserve(img);
+                    }
+                });
+            });
 
-    <section id="services">
-        <h2>Что мы делаем?</h2>
-        <p>Наш мастер может выполнить огромный спектр работ:</p>
-        <ul>
-            <li><strong>Ремонт сантехники:</strong> Устранение протечек, замена смесителей, установка раковин и ванных принадлежностей. Прокладка различных трубопроводов. Установка дополнительного сантехнического оборудования
-                <div class="service-image">
-                    <img src="images/repair_plumbing.png" alt="Ремонт сантехники">
-                </div>
-            </li>
-            <li><strong>Электромонтажные работы:</strong> Замена розеток, выключателей, лампочек, а также установка осветительных приборов и других электрических устройств. Монтаж проводки.
-                <div class="service-image">
-                    <img src="images/electrical_works.png" alt="Электромонтажные работы">
-                </div>
-            </li>
-            <li><strong>Мебельный ремонт:</strong> Ремонт сломанных деталей мебели, замена фурнитуры, восстановление повреждённых поверхностей.
-                <div class="service-image">
-                    <img src="images/furniture_repair.png" alt="Мебельный ремонт">
-                </div>
-            </li>
-            <li><strong>Сборка мебели:</strong> Быстрая и качественная сборка новой мебели, будь то шкафы, столы или кровати. Монтаж.
-                <div class="service-image">
-                    <img src="images/assembly_furniture.png" alt="Сборка мебели">
-                </div>
-            </li>
-            <li><strong>Услуги сварки:</strong> Выполнение различных сварочных работ, таких как ремонт металлических конструкций, изготовление кованых изделий, сварка труб и многое другое.
-                <div class="service-image">
-                    <img src="images/welding_services.png" alt="Услуги сварки">
-                </div>
-            </li>
-            <li><strong>Плотницкие работы:</strong> Изготовление и ремонт деревянных конструкций, напольных покрытий и многое другое.
-                <div class="service-image">
-                    <img src="images/carpentry_works.png" alt="Плотницкие работы">
-                </div>
-            </li>
-        </ul>
-        <p>Если у вас возникла проблема, которая не входит в наш перечень услуг, но вам всё равно нужна помощь, просто сообщите нам об этом, и мы постараемся её решить!</p>
-    </section>
+            lazyImages.forEach(img => {
+                img.dataset.src = img.src;
+                img.src = '';
+                observer.observe(img);
+            });
+        });
 
-    <section id="about">
-        <h2>Почему выбирают нас?</h2>
-        <ul>
-            <li><strong>Быстро:</strong> Мы приедем к вам в течение 1-2 часов после вашего звонка.</li>
-            <li><strong>Профессионально:</strong> Наши мастера имеют большой опыт и знают, как решать любые бытовые задачи.</li>
-            <li><strong>Универсально:</strong> Один мастер может выполнить множество разных работ.</li>
-            <li><strong>Прозрачные цены:</strong> Вы платите только за конкретную работу, никаких скрытых дополнительных расходов.</li>
-            <li><strong>Комфортно:</strong> Вам не нужно думать о инструментах — наш мастер привезёт всё необходимое с собой.</li>
-            <li><strong>Для организаций:</strong> Мы также предоставляем наши услуги для коммерческих и государственных учреждений, обеспечивая высокий уровень обслуживания и оперативное решение задач любой сложности.</li>
-        </ul>
-    </section>
+        // Анимация секций
+        const sections = document.querySelectorAll('section');
+        const sectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
 
-    <section id="process">
-        <h2>Как работает наш сервис?</h2>
-        <ol>
-            <li>Звоните или отправляйте заявку через Whatsapp и Telegram.</li>
-            <li>Сообщаете, что именно нужно сделать.</li>
-            <li>Мастер приезжает в удобное для вас время.</li>
-            <li>Выполняет работу качественно и быстро.</li>
-            <li>Вы оплачиваете только то, что было сделано.</li>
-        </ol>
-        <p>Не откладывайте! Легче всего исправить проблему сразу, чем ждать, пока она станет серьёзной. С нашей помощью ваш дом снова станет уютным и комфортным.</p>
-    </section>
+        sections.forEach(section => sectionObserver.observe(section));
 
-    <section id="contacts">
-        <h2>Наши контакты</h2>
-        <div class="contact-phone">
-                      <p>Телефон: <span id="contact-number">+7 (912) 255-70-88</span></p>
-        </div>
-        <div class="contact-links">
-            <a href="https://wa.me/79122557088" aria-label="Написать в WhatsApp">WhatsApp</a>
-            <a href="https://t.me/+79122557088" aria-label="Написать в Telegram">Telegram</a>
-        </div>
-        <div class="contact-email">
-            <p>Email: <span id="contact-email">dv9122557088@yandex.ru</span></p>
-        </div>
-    </section>
+        // Плавный скролл
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
 
-    <section id="feedback">
-        <h2>Обратная связь</h2>
-        <form class="feedback-form" action="#" method="post">
-            <input type="text" name="name" placeholder="Ваше имя" required>
-            <input type="tel" name="phone" placeholder="Ваш телефон" required>
-            <textarea name="message" placeholder="Ваше сообщение" rows="5" required></textarea>
-            <button type="submit">Отправить</button>
-        </form>
-    </section>
-</div>
-
-<footer>
-    <p>&copy; 2023 Мастер на час. Все права защищены.</p>
-    <div class="social-links">
-        <a href="https://wa.me/79122557088" aria-label="Написать в WhatsApp">WhatsApp</a>
-        <a href="https://t.me/+79122557088" aria-label="Написать в Telegram">Telegram</a>
-    </div>
-</footer>
-
-<button id="scrollToTop" aria-label="Вернуться наверх">↑ Наверх</button>
-
-<script>
-    document.getElementById('scrollToTop').addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
-    window.addEventListener('scroll', () => {
-        const scrollToTopButton = document.getElementById('scrollToTop');
-        if (window.scrollY > 300) {
-            scrollToTopButton.style.display = 'block';
-        } else {
-            scrollToTopButton.style.display = 'none';
-        }
-    });
-</script>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "name": "Мастер на час",
-  "image": "https://вашсайт.ru/images/logo.png",
-  "telephone": "+7 (912) 255-70-88",
-  "email": "dv9122557088@yandex.ru",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Ваш адрес",
-    "addressLocality": "Ваш город",
-    "postalCode": "123456",
-    "addressCountry": "RU"
-  }
-}
-</script>
-
+        // Валидация формы
+        const form = document.querySelector('.feedback-form');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            if (form.checkValidity()) {
+                alert('Заявка успешно отправлена! Мы свяжемся с вами в течение 15 минут.');
+                form.reset();
+            }
+        });
+    </script>
 </body>
 </html>
