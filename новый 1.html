@@ -41,7 +41,7 @@
         h1 {
             font-size: 1.5em;
             margin: 10px 0;
-            word-break: break-word; /* Перенос длинных слов */
+            overflow-wrap: break-word; /* Принудительный перенос текста */
         }
 
         nav {
@@ -75,19 +75,20 @@
             background-color: #ffffff;
             padding: 15px;
             border-radius: 5px;
+            overflow-wrap: break-word; /* Принудительный перенос текста */
         }
 
         h2 {
             font-size: 1.3em;
             margin-bottom: 15px;
-            word-break: break-word; /* Перенос длинных слов */
+            overflow-wrap: break-word; /* Принудительный перенос текста */
         }
 
         p, li {
             font-size: 0.9em;
             line-height: 1.6;
             margin-bottom: 15px;
-            word-break: break-word; /* Перенос длинных слов */
+            overflow-wrap: break-word; /* Принудительный перенос текста */
         }
 
         ul {
@@ -298,7 +299,7 @@
     <section id="contacts">
         <h2>Наши контакты</h2>
         <div class="contact-phone">
-            <p>Телефон: <span id="contact-number">+7 (912) 255-70-88</span></p>
+                      <p>Телефон: <span id="contact-number">+7 (912) 255-70-88</span></p>
         </div>
         <div class="contact-links">
             <a href="https://wa.me/79122557088" aria-label="Написать в WhatsApp">WhatsApp</a>
